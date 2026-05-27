@@ -73,39 +73,74 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { assetUrl } from '../utils/assetUrl.js'
 
 const activeTab = ref('ecom')
 
-/** Figma 12505:7370 */
-const wideCard = {
-  title: '消费品牌电商出海',
-  desc: '搭建 TikTok 海外品牌电商账号矩阵，实现内容种草与销售转化协同运营',
-  stats: [
-    { label: '电商账号稳定运行', value: '1200+' },
-    { label: '海外转化率提升', value: '80%' },
+/** Figma 12505:7370 电商出海 */
+const ecomCases = {
+  wideCard: {
+    title: '消费品牌电商出海',
+    desc: '搭建 TikTok 海外品牌电商账号矩阵，实现内容种草与销售转化协同运营',
+    stats: [
+      { label: '电商账号稳定运行', value: '1200+' },
+      { label: '海外转化率提升', value: '80%' },
+    ],
+  },
+  smallCards: [
+    {
+      title: '跨境零售电商',
+      desc: '搭建小店运营体系，打通短视频带货转化链路',
+      stats: [
+        { label: '电商账号统一管理', value: '900+' },
+        { label: '海外订单增长', value: '150%' },
+      ],
+    },
+    {
+      title: '美妆电商出海',
+      desc: '打造种草达人矩阵，促成品牌曝光销量双增长',
+      stats: [
+        { label: '商品点击转化率提升', value: '95%' },
+        { label: '海外客户增长', value: '110%' },
+      ],
+    },
   ],
 }
 
-const smallCards = [
-  {
-    title: '跨境零售电商',
-    desc: '搭建小店运营体系，打通短视频带货转化链路',
+/** Figma 12539:7893 企业出海 */
+const corpCases = {
+  wideCard: {
+    title: '重工制造业外贸出海',
+    desc: '搭建海外营销账号矩阵，实现内容推广与客户获取规模化运营',
     stats: [
-      { label: '电商账号统一管理', value: '900+' },
-      { label: '海外订单增长', value: '150%' },
+      { label: '出海账号稳定运行', value: '800+' },
+      { label: '新拓展海外市场', value: '+12' },
     ],
   },
-  {
-    title: '美妆电商出海',
-    desc: '打造种草达人矩阵，促成品牌曝光销量双增长',
-    stats: [
-      { label: '商品点击转化率提升', value: '95%' },
-      { label: '海外客户增长', value: '110%' },
-    ],
-  },
-]
+  smallCards: [
+    {
+      title: '外贸家具建材出海',
+      desc: '搭建海外账号矩阵，拓宽引流获客渠道',
+      stats: [
+        { label: '出海账号稳定运行', value: '700+' },
+        { label: '海外客户转化提升', value: '160%' },
+      ],
+    },
+    {
+      title: '内容出海运营团队',
+      desc: '打造内容账号矩阵，提升内容分发运营效率',
+      stats: [
+        { label: '日发布效率提升', value: '400%' },
+        { label: '账号风险率降低', value: '70%' },
+      ],
+    },
+  ],
+}
+
+const caseContent = computed(() => (activeTab.value === 'corp' ? corpCases : ecomCases))
+const wideCard = computed(() => caseContent.value.wideCard)
+const smallCards = computed(() => caseContent.value.smallCards)
 </script>
 
 <style scoped>
