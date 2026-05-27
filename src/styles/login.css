@@ -1,0 +1,533 @@
+/**
+ * 登录页 — Figma 适配稿
+ *   1920×900：12595:8435
+ *   960×900：12597:8608（左右并排）
+ *   <960 仅登录卡：12598:8780（至 520 居中）→ 375：12598:8952
+ *
+ * 视口 ≥960：左右并排，960～1920 线性插值。
+ * 视口 <960：隐藏营销区，登录卡 375 宽 343～959 宽 520 插值居中。
+ *
+ * 布局：min-height max(900px, 100dvh)；顶栏贴顶 → 主内容居中 → 页脚贴底。
+ * OT 组件不覆盖颜色/圆角/字号/hover/focus。
+ */
+
+.login-page {
+  /* 960 ↔ 1920 线性插值 */
+  --login-vw-min: 960px;
+  --login-content-max: clamp(
+    960px,
+    calc(960px + (100vw - var(--login-vw-min)) * 408 / 960),
+    1368px
+  );
+  --login-promo-col: clamp(
+    368px,
+    calc(368px + (100vw - var(--login-vw-min)) * 408 / 960),
+    776px
+  );
+  --login-promo-text: clamp(
+    368px,
+    calc(368px + (100vw - var(--login-vw-min)) * 232 / 960),
+    600px
+  );
+  --login-inline-pad: clamp(
+    20px,
+    calc(20px + (100vw - var(--login-vw-min)) * 60 / 960),
+    80px
+  );
+  --login-col-gap: 24px;
+
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: max(900px, 100vh);
+  min-height: max(900px, 100dvh);
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: var(--el-font-family), 'Alibaba PuHuiTi 3.0', 'PingFang SC', sans-serif;
+  color: var(--el-text-color-primary);
+  background: transparent;
+}
+
+/* ── 背景：fixed + 裁剪；稿面 1920 坐标系 ── */
+.login-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.login-bg__stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 2160px;
+  pointer-events: none;
+}
+
+.login-bg__layer {
+  position: absolute;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.login-bg__bg {
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  background-image: url('/img/login/bg.png');
+  background-size: 1920px 1080px;
+}
+
+.login-bg__middle {
+  left: -46px;
+  top: 62px;
+  width: 2240px;
+  height: 1260px;
+  background-image: url('/img/login/middle.png');
+  background-size: 2240px 1260px;
+  transform-origin: 1966px 2098px;
+  animation: login-bg-middle-swing 10s linear infinite;
+  will-change: transform;
+}
+
+@keyframes login-bg-middle-swing {
+  from {
+    transform: rotate(-7deg);
+  }
+
+  to {
+    transform: rotate(7deg);
+  }
+}
+
+.login-bg__overlay {
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  background-image: url('/img/login/overlay.png');
+  background-size: 1920px 1080px;
+}
+
+/* ── 导航：≥960 高 72；<960 高 48（12598:8780 / 8952） ── */
+.login-header {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 100%;
+  height: 72px;
+  padding: 16px var(--login-inline-pad);
+  box-sizing: border-box;
+}
+
+.login-header__inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+}
+
+.login-logo-link {
+  display: block;
+  line-height: 0;
+}
+
+.login-logo {
+  display: block;
+  width: 160px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* ── 中间 + 底栏 ── */
+.login-body {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  align-items: stretch;
+  width: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+/* 主内容区 max 1368@1920 / 960@960，区内左右各 24 */
+.login-main {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: var(--login-col-gap);
+  width: 100%;
+  max-width: var(--login-content-max);
+  margin: 0 auto;
+  padding: 24px;
+  justify-self: center;
+  align-self: center;
+  min-height: min-content;
+  box-sizing: border-box;
+}
+
+.login-promo {
+  flex: 1 1 var(--login-promo-col);
+  width: var(--login-promo-col);
+  min-width: 0;
+  max-width: var(--login-promo-col);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+  box-sizing: border-box;
+}
+
+.login-promo__intro,
+.login-promo__features {
+  width: 100%;
+  max-width: var(--login-promo-text);
+}
+
+.login-promo__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.login-promo__tag {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 9999px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--el-color-primary);
+  background: var(--el-color-primary-8);
+}
+
+.login-promo__title {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: var(--el-text-color-primary);
+}
+
+.login-promo__title span {
+  display: block;
+}
+
+.login-promo__desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--el-text-color-regular);
+}
+
+.login-promo__features {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-promo__feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--el-text-color-primary);
+}
+
+.login-promo__feature-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--el-color-primary);
+}
+
+/* 右卡固定 520 */
+.login-card {
+  flex: 0 0 520px;
+  width: 520px;
+  padding: 64px 32px;
+  box-sizing: border-box;
+  background: var(--el-bg-color-overlay);
+  border: 1px solid var(--el-border-color-light);
+  border-radius: 24px;
+}
+
+.login-card__title {
+  margin: 0 0 32px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+  color: var(--el-text-color-primary);
+}
+
+.login-card__panel {
+  width: 100%;
+  max-width: 100%;
+}
+
+.login-card__tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  height: 56px;
+  margin-bottom: 24px;
+}
+
+.login-card__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 0;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--el-text-color-regular);
+}
+
+.login-card__tab.is-active {
+  font-weight: 500;
+  color: var(--el-text-color-primary);
+  border-bottom-color: var(--el-icon-color-primary);
+}
+
+.login-card__tab:focus-visible {
+  outline: 2px solid var(--el-color-primary);
+  outline-offset: 2px;
+}
+
+.login-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+.login-card__main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.login-card__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.login-card__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.login-card__inputs .el-input {
+  width: 100%;
+}
+
+.login-card__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+}
+
+/* 登录 / 企业：同一列、同宽对齐（稿面间距 16） */
+.login-card__btn-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  width: 100%;
+}
+
+.login-form__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 32px;
+}
+
+.login-form__row .el-checkbox {
+  margin-right: 0;
+}
+
+.login-card__btn-wrap {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+.login-card__btn-wrap .el-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.login-card__btn-wrap--google .el-button > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.login-btn-google__img {
+  display: block;
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.login-card__social {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  width: 100%;
+}
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  height: 20px;
+}
+
+.login-divider__line {
+  flex: 1;
+  height: 1px;
+  background: var(--el-border-color-light);
+}
+
+.login-divider__text {
+  flex-shrink: 0;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--el-text-color-secondary);
+}
+
+.login-register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--el-text-color-regular);
+}
+
+/* 稿面 900 高，页脚 y835 → 底边约 41px */
+.login-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 24px;
+  justify-self: center;
+  padding-bottom: 41px;
+  box-sizing: content-box;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--el-text-color-regular);
+}
+
+.login-footer__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--el-text-color-secondary);
+  flex-shrink: 0;
+}
+
+/* ── <960：仅登录卡（12598:8780 @959 ～ 12598:8952 @375） ── */
+@media (max-width: 959px) {
+  .login-page {
+    --login-vw-narrow-min: 375px;
+    --login-card-width: clamp(
+      343px,
+      calc(343px + (100vw - var(--login-vw-narrow-min)) * 177 / 584),
+      520px
+    );
+    --login-inline-pad: 20px;
+  }
+
+  .login-header {
+    height: 48px;
+    padding: 12px var(--login-inline-pad);
+  }
+
+  .login-header__inner {
+    height: 24px;
+  }
+
+  .login-logo {
+    width: 96px;
+    height: 24px;
+  }
+
+  .login-promo {
+    display: none;
+  }
+
+  .login-main {
+    flex-direction: column;
+    align-items: center;
+    max-width: none;
+    width: 100%;
+    padding: 0 16px;
+    gap: 0;
+  }
+
+  .login-card {
+    flex: 0 0 auto;
+    width: var(--login-card-width);
+    max-width: 100%;
+    padding: 48px 24px;
+  }
+
+  .login-footer {
+    padding-bottom: 16px;
+  }
+}
+
+/* ≥960：最小宽度与桌面插值 */
+@media (min-width: 960px) {
+  .login-page {
+    min-width: 960px;
+    overflow-x: auto;
+  }
+}

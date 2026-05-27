@@ -1,0 +1,147 @@
+/* 全站滚动 / 首屏动效时长（改这里即可统一调慢） */
+:root {
+  --reveal-duration: 1s;
+  --reveal-duration-slow: 1.2s;
+  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-stagger: 0.2s;
+}
+
+/* Banner 首屏动效 */
+.banner--enter .hero-shot {
+  overflow: hidden;
+}
+
+.banner--enter .hero-shot-frame {
+  transform: translateY(100%);
+  opacity: 0;
+  transition:
+    transform var(--reveal-duration-slow) var(--reveal-ease),
+    opacity var(--reveal-duration-slow) ease;
+}
+
+.banner--enter.banner--ready .hero-shot-frame {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.banner--enter .hero-text > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--reveal-duration) ease,
+    transform var(--reveal-duration) ease;
+}
+
+.banner--enter.banner--ready .hero-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.35s;
+}
+
+.banner--enter.banner--ready .hero-sub {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.55s;
+}
+
+.banner--enter.banner--ready .hero-text > .el-button,
+.banner--enter.banner--ready .hero-text > .btn-cta-black {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.75s;
+}
+
+/* 解决方案：与 Banner 同屏，从左到右依次出现 */
+.solutions--enter .solution-item {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition:
+    opacity var(--reveal-duration) ease,
+    transform var(--reveal-duration) ease;
+}
+
+.solutions--enter.solutions--ready .solution-item:nth-child(1) {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.75s;
+}
+
+.solutions--enter.solutions--ready .solution-item:nth-child(2) {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 1s;
+}
+
+.solutions--enter.solutions--ready .solution-item:nth-child(3) {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 1.25s;
+}
+
+/* 核心自研系统：滚入视口后标题 + 四卡依次出现 */
+.systems--reveal .landing-header-center,
+.systems--reveal .systems-cta {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity var(--reveal-duration) ease,
+    transform var(--reveal-duration) ease;
+}
+
+.systems--reveal .system-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity var(--reveal-duration) ease,
+    transform var(--reveal-duration) ease;
+}
+
+.systems--reveal.systems--reveal-visible .landing-header-center {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.systems--reveal.systems--reveal-visible .system-card:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--reveal-stagger) * 1);
+}
+
+.systems--reveal.systems--reveal-visible .system-card:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--reveal-stagger) * 2);
+}
+
+.systems--reveal.systems--reveal-visible .system-card:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--reveal-stagger) * 3);
+}
+
+.systems--reveal.systems--reveal-visible .system-card:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--reveal-stagger) * 4);
+}
+
+.systems--reveal.systems--reveal-visible .systems-cta {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--reveal-stagger) * 5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner--enter .hero-shot-frame,
+  .banner--enter .hero-text > *,
+  .banner--enter .hero-text > .el-button,
+  .solutions--enter .solution-item,
+  .systems--reveal .landing-header-center,
+  .systems--reveal .system-card,
+  .systems--reveal .systems-cta {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

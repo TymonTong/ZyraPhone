@@ -1,0 +1,1558 @@
+/**
+ * 官网响应式断点
+ *
+ * | 视口宽度        | 说明              |
+ * |----------------|-------------------|
+ * | > 1600px       | 默认（设计稿基准） |
+ * | 1400 – 1600px  | 大标题 36/44，小标题 20/28 |
+ * | 1200 – 1400px  | 详见下方          |
+ * | 960 – 1200px   | 见下方各模块 Figma 12507:15501 等 |
+ * | 768 – 960px    | 见下方各模块 Figma 12507:12842 等 |
+ * | < 768px        | 见下方 Figma 12507:14892 等 |
+ */
+
+/* Banner 主标题：视口 768px – 1600px 统一 40/48（与各断点 section 标题变量无关） */
+@media (max-width: 1600px) and (min-width: 768px) {
+  .landing-page .hero-title {
+    font-size: 40px !important;
+    line-height: 48px !important;
+  }
+}
+
+/* ── 1400px – 1600px ───────────────────────────────────────── */
+@media (max-width: 1600px) and (min-width: 1400px) {
+  .landing-page {
+    --landing-title-font-size: 36px;
+    --landing-title-line-height: 44px;
+    --landing-subtitle-font-size: 20px;
+    --landing-subtitle-line-height: 28px;
+    --training-tab-font-size: 18px;
+    --training-tab-line-height: 26px;
+    /* feature-title 高度保持 48，与 icon-box-48 对齐 */
+  }
+}
+
+/* ── 1200px – 1400px ───────────────────────────────────────── */
+@media (max-width: 1399px) and (min-width: 1200px) {
+  .landing-page {
+    --landing-title-font-size: 32px;
+    --landing-title-line-height: 40px;
+    --landing-subtitle-font-size: 18px;
+    --landing-subtitle-line-height: 26px;
+    --landing-subtitle-block-height: 32px;
+    --training-tab-font-size: 18px;
+    --training-tab-line-height: 26px;
+  }
+
+  /* 解决方案标题 */
+  .landing-page .solution-title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  /* 选择我们：Figma 12507:9692 — 32×32 容器，Lottie 18.667，圆角 8 */
+  .landing-page {
+    --choose-icon-box-size: 32px;
+    --choose-icon-lottie-size: 18.667px;
+    --choose-icon-box-radius: 8px;
+  }
+
+  .landing-page .feature-title {
+    height: 32px;
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  /* 自研系统小标题 */
+  .landing-page .system-title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .landing-page {
+    --cases-tab-font-size: 20px;
+    --cases-tab-line-height: 28px;
+  }
+
+  /* 出海案例卡片标题 */
+  .landing-page .case-title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  /* 内容培训卡片小标题 */
+  .landing-page .training-card-title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+/* ── 960px – 1200px ────────────────────────────────────────── */
+@media (max-width: 1199px) and (min-width: 960px) {
+  .landing-page {
+    --landing-title-font-size: 32px;
+    --landing-title-line-height: 40px;
+    --landing-subtitle-font-size: 18px;
+    --landing-subtitle-line-height: 26px;
+    --landing-subtitle-block-height: 32px;
+    --training-tab-font-size: 16px;
+    --training-tab-line-height: 24px;
+    --solution-title-font-size: 18px;
+    --solution-title-line-height: 26px;
+    --cases-tab-font-size: 20px;
+    --cases-tab-line-height: 28px;
+    --choose-icon-box-size: 32px;
+    --choose-icon-lottie-size: 18.667px;
+    --choose-icon-box-radius: 8px;
+    --solutions-inner-direction: column;
+    --data-inner-grid-columns: minmax(0, 1fr);
+    --systems-cards-display: grid;
+    --systems-cards-grid-columns: repeat(2, minmax(0, 1fr));
+    --system-card-flex: none;
+    --training-cards-display: grid;
+    --training-card-flex: none;
+    --cases-grid-display: flex;
+    --cases-grid-columns: none;
+  }
+
+  .landing-page .landing-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* 解决方案：纵向堆叠 Figma 12507:15501 */
+  .landing-page .solutions {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .landing-page .solution-item {
+    flex: none;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  /* 数据成果：上下堆叠 Figma 12507:15542 */
+  .landing-page .data-results {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  /* 单列：标题+数据(上) ─ 地图(下) */
+  .landing-page .data-inner {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 24px !important;
+    align-items: stretch !important;
+  }
+
+  .landing-page .data-left {
+    min-height: 0 !important;
+    gap: 56px !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+
+  .landing-page .data-head {
+    align-items: center !important;
+    text-align: center !important;
+    gap: 16px !important;
+  }
+
+  .landing-page .data-title,
+  .landing-page .data-desc {
+    text-align: center !important;
+  }
+
+  .landing-page .metrics {
+    width: 100% !important;
+    height: 152px !important;
+  }
+
+  .landing-page .metric-item {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .landing-page .metric-value-row {
+    justify-content: center !important;
+  }
+
+  .landing-page .data-map {
+    width: 100% !important;
+  }
+
+  /* 选择我们：仅用 choose-hero 内 bg，隐藏 BigBgZone 贯穿大图 */
+  .landing-page .big-bg-zone__img {
+    display: none !important;
+  }
+
+  /* 选择我们 Figma 12507:15662 */
+  .landing-page .choose-us {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .landing-page .choose-inner {
+    gap: 0 !important;
+  }
+
+  .landing-page .choose-header {
+    display: none !important;
+  }
+
+  /* 顶部条带：bg 绝对定位底层 + 左文案 + 右 168×155 小图 */
+  .landing-page .choose-hero {
+    display: flex !important;
+    position: relative !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+    width: 100% !important;
+    padding: 24px 0 0 24px !important;
+    background: var(--el-color-primary-light-9, #f2f4fa) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    isolation: isolate !important;
+  }
+
+  .landing-page .choose-hero__bg {
+    display: block !important;
+    position: absolute !important;
+    z-index: 0 !important;
+    top: 50% !important;
+    right: 0 !important;
+    width: 960px !important;
+    height: 732px !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+  }
+
+  .landing-page .choose-hero__bg-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transform: scaleY(-1) rotate(180deg) !important;
+  }
+
+  .landing-page .choose-hero__copy {
+    position: relative !important;
+    z-index: 1 !important;
+    padding-top: 24px !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    gap: 16px !important;
+  }
+
+  .landing-page .choose-demo--hero {
+    display: block !important;
+    position: relative !important;
+    z-index: 1 !important;
+    flex: 0 0 168px !important;
+    width: 168px !important;
+    height: 155px !important;
+    align-self: flex-start !important;
+  }
+
+  .landing-page .choose-demo--hero .choose-demo__img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  /* 下方 6 格特性区：去掉侧图，只剩 grid */
+  .landing-page .choose-body {
+    display: block !important;
+    width: 100% !important;
+    padding-top: 0 !important;
+  }
+
+  .landing-page .choose-demo--side {
+    display: none !important;
+  }
+
+  .landing-page .features-grid {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(3, auto) !important;
+    gap: 0 !important;
+  }
+
+  .landing-page .feature-cell {
+    padding: 32px 24px !important;
+    gap: 24px !important;
+  }
+
+  .landing-page .feature-title {
+    height: 32px !important;
+    font-size: 18px !important;
+    line-height: 26px !important;
+  }
+
+  /* 导航栏：960–1200 断点隐藏注册按钮 */
+  .landing-page .navbar-right .nav-link--sub {
+    display: none !important;
+  }
+
+  /* 自研系统：2×2 Figma 12507:15748 */
+  .landing-page .systems {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .landing-page .system-title {
+    white-space: normal;
+  }
+
+  /* 出海案例 Figma 12507:15776 */
+  .landing-page .cases {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  /* 出海案例 Figma 12505:7370：左右 1:1，右侧保持 2 列卡片栅格 */
+  .landing-page .cases-wrap {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    align-items: stretch;
+    gap: 24px;
+    padding: 32px;
+    min-height: 0;
+  }
+
+  .landing-page .cases-sidebar {
+    flex: none !important;
+    min-width: 0;
+    padding: 32px 24px 0;
+    gap: 48px;
+  }
+
+  .landing-page .cases-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    flex: none !important;
+    min-width: 0;
+    gap: 16px;
+  }
+
+  .landing-page .case-card--wide {
+    grid-column: 1 / -1;
+  }
+
+  .landing-page .case-card,
+  .landing-page .case-card--wide {
+    width: 100%;
+    height: 228px;
+  }
+
+  .landing-page .cases-tab-img {
+    width: min(400px, 42%);
+    height: auto;
+    aspect-ratio: 400 / 240;
+  }
+
+  /* 内容培训 Figma 12507:15897 */
+  .landing-page .training {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .landing-page .training-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, auto);
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  /* 底部 Footer（页面最底部 SiteFooter）Figma 12507:15958 */
+  .landing-page .footer-cta {
+    padding-top: 72px !important;
+    padding-bottom: 80px !important;
+  }
+
+  .landing-page .footer-main {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 24px !important;
+    padding-top: 32px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .landing-page .footer-logo {
+    width: 128px !important;
+    height: 32px !important;
+    object-fit: contain !important;
+  }
+
+  .landing-page .footer .cta-line-muted,
+  .landing-page .footer .cta-line-main {
+    font-size: 32px !important;
+    line-height: 40px !important;
+  }
+
+  .landing-page .footer-bottom {
+    width: 100% !important;
+    height: 64px !important;
+    justify-content: space-between !important;
+  }
+}
+
+/* ── 768px – 960px ─────────────────────────────────────────── */
+@media (max-width: 959px) and (min-width: 768px) {
+  .landing-page {
+    --navbar-height: 64px;
+    --landing-title-font-size: 32px;
+    --landing-title-line-height: 40px;
+    --landing-subtitle-font-size: 16px;
+    --landing-subtitle-line-height: 24px;
+    --landing-subtitle-block-height: 32px;
+    --training-tab-font-size: 16px;
+    --training-tab-line-height: 24px;
+    --solution-title-font-size: 18px;
+    --solution-title-line-height: 26px;
+    --solution-title-block-height: 32px;
+    --cases-tab-font-size: 20px;
+    --cases-tab-line-height: 28px;
+    --choose-icon-box-size: 32px;
+    --choose-icon-lottie-size: 18.667px;
+    --choose-icon-box-radius: 8px;
+    --solutions-inner-direction: column;
+    --data-inner-grid-columns: minmax(0, 1fr);
+    --systems-cards-display: grid;
+    --systems-cards-grid-columns: repeat(2, minmax(0, 1fr));
+    --system-card-flex: none;
+    --training-cards-display: grid;
+    --training-card-flex: none;
+    --cases-grid-display: flex;
+    --cases-grid-columns: none;
+  }
+
+  .landing-page .landing-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Banner：顶部间距 144 + content 自适应，主图 max-h 320 */
+  .landing-page .banner {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding-top: var(--banner-top-spacing, 144px) !important;
+  }
+
+  .landing-page .banner-content {
+    gap: 64px !important;
+    flex: none !important;
+    width: 100% !important;
+  }
+
+  .landing-page .hero-shot {
+    max-height: 320px !important;
+    height: auto !important;
+  }
+
+  .landing-page .hero-shot-frame {
+    max-height: 320px !important;
+    height: auto !important;
+    aspect-ratio: 2000 / 1160 !important;
+  }
+
+  /* 导航 Figma 12507:13370 — 高 64，Logo + 汉堡 */
+  .landing-page .navbar {
+    height: 64px !important;
+  }
+
+  .landing-page .navbar-inner {
+    flex: 0 0 64px !important;
+    height: 64px !important;
+  }
+
+  .landing-page .navbar-mobile-panel {
+    top: 64px !important;
+  }
+
+  /* 导航：Logo + 汉堡，菜单进抽屉 */
+  .landing-page .nav-menu {
+    display: none !important;
+  }
+
+  .landing-page .navbar-right .nav-link--sub,
+  .landing-page .navbar-right > .btn-login {
+    display: none !important;
+  }
+
+  .landing-page .navbar-menu-btn {
+    display: flex !important;
+  }
+
+  .landing-page .navbar-mobile-panel.is-open {
+    display: block !important;
+  }
+
+  /* 解决方案 Figma 12507:12851 */
+  .landing-page .solutions {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .landing-page .solutions-inner {
+    gap: 24px !important;
+  }
+
+  .landing-page .solution-item {
+    flex: none;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+    gap: 16px !important;
+  }
+
+  .landing-page .solution-title {
+    margin: 0 0 8px !important;
+    height: var(--solution-title-block-height, 32px) !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 18px !important;
+    line-height: 26px !important;
+  }
+
+  .landing-page .solution-desc {
+    margin: 0 !important;
+  }
+
+  /* 数据成果 Figma 12507:12892 */
+  .landing-page .data-results {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .landing-page .data-inner {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 24px !important;
+    align-items: stretch !important;
+  }
+
+  .landing-page .data-left {
+    min-height: 0 !important;
+    gap: 56px !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+
+  .landing-page .data-head {
+    align-items: center !important;
+    text-align: center !important;
+    gap: 16px !important;
+  }
+
+  .landing-page .data-title,
+  .landing-page .data-desc {
+    text-align: center !important;
+  }
+
+  .landing-page .metrics {
+    width: 100% !important;
+    height: 152px !important;
+  }
+
+  .landing-page .metric-item {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .landing-page .metric-value-row {
+    justify-content: center !important;
+  }
+
+  .landing-page .data-map {
+    width: 100% !important;
+  }
+
+  .landing-page .map-bar {
+    width: 2px !important;
+    border-radius: 1px !important;
+  }
+
+  /* 选择我们 Figma 12507:13012 */
+  .landing-page .big-bg-zone__img {
+    display: none !important;
+  }
+
+  .landing-page .choose-us {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .landing-page .choose-inner {
+    gap: 0 !important;
+  }
+
+  .landing-page .choose-header {
+    display: none !important;
+  }
+
+  .landing-page .choose-hero {
+    display: flex !important;
+    position: relative !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+    width: 100% !important;
+    padding: 24px 0 0 24px !important;
+    background: var(--el-color-primary-light-9, #f2f4fa) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    isolation: isolate !important;
+  }
+
+  .landing-page .choose-hero__bg {
+    display: block !important;
+    position: absolute !important;
+    z-index: 0 !important;
+    top: 50% !important;
+    right: 0 !important;
+    width: min(960px, 130%) !important;
+    height: auto !important;
+    aspect-ratio: 960 / 732 !important;
+    max-height: none !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+  }
+
+  .landing-page .choose-hero__bg-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transform: scaleY(-1) rotate(180deg) !important;
+  }
+
+  .landing-page .choose-hero__copy {
+    position: relative !important;
+    z-index: 1 !important;
+    padding-top: 24px !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    gap: 16px !important;
+  }
+
+  .landing-page .choose-demo--hero {
+    display: block !important;
+    position: relative !important;
+    z-index: 1 !important;
+    flex: 0 0 168px !important;
+    width: 168px !important;
+    height: 155px !important;
+    align-self: flex-start !important;
+  }
+
+  .landing-page .choose-demo--hero .choose-demo__img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .landing-page .choose-body {
+    display: block !important;
+    width: 100% !important;
+    padding-top: 0 !important;
+  }
+
+  .landing-page .choose-demo--side {
+    display: none !important;
+  }
+
+  .landing-page .features-grid {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(3, auto) !important;
+    gap: 0 !important;
+  }
+
+  .landing-page .feature-cell {
+    padding: 32px 24px !important;
+    gap: 24px !important;
+  }
+
+  .landing-page .feature-title {
+    height: 32px !important;
+    font-size: 18px !important;
+    line-height: 26px !important;
+  }
+
+  /* 自研系统 Figma 12507:13098 */
+  .landing-page .systems {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .landing-page .system-title {
+    white-space: normal;
+  }
+
+  /* 出海案例 Figma 12505:7370 */
+  .landing-page .cases {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .landing-page .cases-wrap {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    align-items: stretch;
+    gap: 24px;
+    padding: 32px;
+    min-height: 0;
+  }
+
+  .landing-page .cases-sidebar {
+    flex: none !important;
+    min-width: 0;
+    padding: 32px 24px 0;
+    gap: 48px;
+  }
+
+  .landing-page .cases-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    flex: none !important;
+    min-width: 0;
+    gap: 16px;
+  }
+
+  .landing-page .case-card--wide {
+    grid-column: 1 / -1;
+  }
+
+  .landing-page .case-card,
+  .landing-page .case-card--wide {
+    width: 100%;
+    height: 228px;
+  }
+
+  .landing-page .cases-tab-img {
+    width: min(400px, 42%);
+    height: auto;
+    aspect-ratio: 400 / 240;
+  }
+
+  /* 内容培训 Figma 12507:13247 */
+  .landing-page .training {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .landing-page .training-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, auto);
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  /* 底部 Footer Figma 12507:13308 */
+  .landing-page .footer-cta {
+    padding-top: 72px !important;
+    padding-bottom: 80px !important;
+  }
+
+  .landing-page .footer-main {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 24px !important;
+    padding-top: 32px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .landing-page .footer-logo {
+    width: 128px !important;
+    height: 32px !important;
+    object-fit: contain !important;
+  }
+
+  .landing-page .footer .cta-line-muted,
+  .landing-page .footer .cta-line-main {
+    font-size: 32px !important;
+    line-height: 40px !important;
+  }
+
+  .landing-page .footer-bottom {
+    width: 100% !important;
+    height: 64px !important;
+    justify-content: space-between !important;
+  }
+}
+
+/* ── < 768px ───────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .landing-page {
+    --navbar-height: 64px;
+    --banner-top-spacing: 112px;
+    --landing-title-font-size: 28px;
+    --landing-title-line-height: 36px;
+    --landing-subtitle-font-size: 14px;
+    --landing-subtitle-line-height: 22px;
+    --landing-subtitle-block-height: 32px;
+    --training-tab-font-size: 16px;
+    --training-tab-line-height: 24px;
+    --solution-title-font-size: 16px;
+    --solution-title-line-height: 24px;
+    --solution-title-block-height: 32px;
+    --cases-tab-font-size: 16px;
+    --cases-tab-line-height: 24px;
+    --choose-icon-box-size: 32px;
+    --choose-icon-lottie-size: 18.667px;
+    --choose-icon-box-radius: 8px;
+    --solutions-inner-direction: column;
+    --data-inner-grid-columns: minmax(0, 1fr);
+    --systems-cards-display: flex;
+    --systems-cards-grid-columns: none;
+    --system-card-flex: none;
+    --training-cards-display: flex;
+    --training-card-flex: none;
+    --cases-grid-display: flex;
+    --cases-grid-columns: none;
+  }
+
+  .landing-page .landing-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* Banner：顶部间距 112 + content 自适应 */
+  .landing-page .banner {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding-top: var(--banner-top-spacing, 112px) !important;
+  }
+
+  .landing-page .banner-content {
+    gap: 48px !important;
+    flex: none !important;
+  }
+
+  .landing-page .hero-title {
+    font-size: 32px !important;
+    line-height: 40px !important;
+  }
+
+  .landing-page .hero-shot {
+    max-height: 320px !important;
+    height: auto !important;
+  }
+
+  .landing-page .hero-shot-frame {
+    max-height: 320px !important;
+    height: auto !important;
+    aspect-ratio: 2000 / 1160 !important;
+  }
+
+  /* 导航：同平板 64px + 汉堡 */
+  .landing-page .nav-menu {
+    display: none !important;
+  }
+
+  .landing-page .navbar {
+    height: 64px !important;
+  }
+
+  .landing-page .navbar-inner {
+    flex: 0 0 64px !important;
+    height: 64px !important;
+  }
+
+  .landing-page .navbar-mobile-panel {
+    top: 64px !important;
+  }
+
+  .landing-page .navbar-right .nav-link--sub,
+  .landing-page .navbar-right > .btn-login {
+    display: none !important;
+  }
+
+  .landing-page .navbar-menu-btn {
+    display: flex !important;
+  }
+
+  .landing-page .navbar-mobile-panel.is-open {
+    display: block !important;
+  }
+
+  /* 解决方案 Figma 12507:14901 */
+  .landing-page .solutions {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .landing-page .solutions-inner {
+    gap: 24px !important;
+  }
+
+  .landing-page .solution-item {
+    flex: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    gap: 16px !important;
+  }
+
+  .landing-page .solution-title {
+    margin: 0 0 4px !important;
+    height: var(--solution-title-block-height, 32px) !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+
+  .landing-page .solution-desc {
+    margin: 0 !important;
+  }
+
+  /* 数据成果 Figma 12507:14942 */
+  .landing-page .data-results {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .landing-page .data-inner {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 24px !important;
+    align-items: stretch !important;
+  }
+
+  .landing-page .data-left {
+    min-height: 0 !important;
+    gap: 32px !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+
+  .landing-page .data-head {
+    align-items: center !important;
+    text-align: center !important;
+    gap: 16px !important;
+  }
+
+  .landing-page .data-tag {
+    align-self: center !important;
+  }
+
+  .landing-page .data-title {
+    font-size: 24px !important;
+    line-height: 32px !important;
+    text-align: center !important;
+  }
+
+  .landing-page .data-desc {
+    font-size: 14px !important;
+    line-height: 22px !important;
+    text-align: center !important;
+  }
+
+  .landing-page .metrics {
+    width: 100% !important;
+    height: 152px !important;
+    row-gap: 24px !important;
+    column-gap: 0 !important;
+  }
+
+  .landing-page .metric-item {
+    gap: 8px !important;
+    align-items: center !important;
+    text-align: center !important;
+    justify-content: flex-start !important;
+  }
+
+  .landing-page .metric-number {
+    font-size: 24px !important;
+    line-height: 32px !important;
+  }
+
+  .landing-page .metric-label {
+    font-size: 14px !important;
+    line-height: 22px !important;
+  }
+
+  .landing-page .metric-suffix {
+    font-size: 12px !important;
+    line-height: 20px !important;
+    padding: 3px 0 !important;
+  }
+
+  .landing-page .metric-value-row {
+    justify-content: center !important;
+    align-items: flex-end !important;
+  }
+
+  .landing-page .data-map {
+    width: 100% !important;
+  }
+
+  .landing-page .map-bar {
+    width: 1px !important;
+    border-radius: 0.5px !important;
+  }
+
+  /* 选择我们 Figma 12507:14239 */
+  .landing-page .big-bg-zone__img {
+    display: none !important;
+  }
+
+  .landing-page .choose-us {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+
+  .landing-page .choose-inner {
+    gap: 8px !important;
+  }
+
+  .landing-page .choose-header {
+    display: none !important;
+  }
+
+  /* 标题卡片：内边距 24 + 文案居中，高度由内容撑开 Figma 12581:8292 */
+  .landing-page .choose-hero {
+    display: flex !important;
+    position: relative !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 24px !important;
+    gap: 0 !important;
+    background: var(--el-color-primary-light-9, #f2f4fa) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    isolation: isolate !important;
+  }
+
+  /* big bg 2：576×439.2，贴右 */
+  .landing-page .choose-hero__bg {
+    display: block !important;
+    position: absolute !important;
+    z-index: 0 !important;
+    top: 50% !important;
+    right: 0 !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 576px !important;
+    max-width: 80% !important;
+    height: 439.2px !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+  }
+
+  .landing-page .choose-hero__bg-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transform: scaleY(-1) rotate(180deg) !important;
+  }
+
+  .landing-page .choose-hero__copy {
+    position: relative !important;
+    z-index: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+    gap: 16px !important;
+    text-align: center !important;
+  }
+
+  .landing-page .choose-hero__copy .landing-h2,
+  .landing-page .choose-hero__copy .landing-desc {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+
+  .landing-page .choose-hero__copy .landing-h2 {
+    font-size: 24px !important;
+    line-height: 32px !important;
+    font-weight: 700 !important;
+  }
+
+  .landing-page .choose-hero__copy .landing-desc {
+    font-size: 14px !important;
+    line-height: 22px !important;
+    color: var(--el-text-color-secondary) !important;
+  }
+
+  .landing-page .choose-demo--hero,
+  .landing-page .choose-demo--side {
+    display: none !important;
+  }
+
+  .landing-page .choose-body {
+    display: block !important;
+    width: 100% !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* 768 以下无悬浮态 */
+  .landing-page .feature-cell--hover {
+    background: transparent !important;
+  }
+
+  .landing-page .features-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    gap: 0 !important;
+  }
+
+  /* 特性项：纵向 icon → 标题 → 描述，上内边距 16 */
+  .landing-page .feature-cell {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    padding: 16px 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+
+  .landing-page .feature-cell[data-figma-no='06'] {
+    order: 1;
+  }
+
+  .landing-page .feature-cell[data-figma-no='05'] {
+    order: 2;
+  }
+
+  .landing-page .feature-cell[data-figma-no='04'] {
+    order: 3;
+  }
+
+  .landing-page .feature-cell[data-figma-no='03'] {
+    order: 4;
+  }
+
+  .landing-page .feature-cell[data-figma-no='02'] {
+    order: 5;
+  }
+
+  .landing-page .feature-cell[data-figma-no='01'] {
+    order: 6;
+  }
+
+  .landing-page .feature-title {
+    height: auto !important;
+    font-size: 18px !important;
+    line-height: 26px !important;
+    font-weight: 500 !important;
+  }
+
+  .landing-page .feature-desc {
+    font-size: 14px !important;
+    line-height: 22px !important;
+  }
+
+  .landing-page .feature-text {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* 自研系统 Figma 12507:15147 — 单列堆叠 */
+  .landing-page .systems {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+
+  .landing-page .systems-cards {
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  .landing-page .system-card {
+    width: 100% !important;
+  }
+
+  .landing-page .system-img {
+    aspect-ratio: 720 / 537.313 !important;
+  }
+
+  .landing-page .system-title {
+    white-space: normal !important;
+    font-size: 18px !important;
+    line-height: 26px !important;
+  }
+
+  .landing-page .systems-cta {
+    width: 100% !important;
+    max-width: 240px !important;
+  }
+
+  /* 出海案例 Figma 12507:14353（375 移动端） */
+  .landing-page .cases {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+
+  /* 灰底面板 327×976：内容撑开 + 底图绝对定位 */
+  .landing-page .cases-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    padding: 32px 24px 0 !important;
+    min-height: 976px !important;
+    overflow: hidden !important;
+    border-radius: 16px !important;
+  }
+
+  /* 顶部网格装饰 1200×600，贴面板右上 Figma 14357 */
+  .landing-page .cases-bg-right {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    width: 1200px !important;
+    height: 600px !important;
+    max-width: none !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  .landing-page .cases-bg-right img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  .landing-page .cases-sidebar {
+    order: 1 !important;
+    position: relative !important;
+    z-index: 2 !important;
+    flex: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    gap: 24px !important;
+  }
+
+  .landing-page .cases-head {
+    gap: 16px !important;
+    align-items: stretch !important;
+    text-align: center !important;
+  }
+
+  .landing-page .cases-head .landing-h2 {
+    width: 100% !important;
+    font-size: 24px !important;
+    line-height: 32px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+  }
+
+  .landing-page .cases-head .landing-desc {
+    width: 100% !important;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    text-align: center !important;
+  }
+
+  /* Tabs-horizontal：无灰线，选中项主色下划线与文案同宽 */
+  .landing-page .cases-tabs {
+    flex-direction: row !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    width: 100% !important;
+    height: 56px !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+    border-bottom: none !important;
+  }
+
+  .landing-page .cases-tab {
+    flex: 1 1 0 !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    padding: 0 16px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .landing-page .cases-tab-text {
+    position: relative !important;
+    display: inline-block !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+  }
+
+  .landing-page .cases-tab:not(.is-active) .cases-tab-text {
+    font-weight: 400 !important;
+    color: var(--el-text-color-regular, #59596e) !important;
+  }
+
+  .landing-page .cases-tab.is-active {
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .landing-page .cases-tab.is-active .cases-tab-text {
+    font-weight: 500 !important;
+    color: var(--el-color-primary, #1b00e5) !important;
+  }
+
+  .landing-page .cases-tab.is-active .cases-tab-text::after {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 2px !important;
+    bottom: -16px !important;
+    background: var(--el-color-primary, #1b00e5) !important;
+    border-radius: 0 !important;
+  }
+
+  .landing-page .cases-tab .tab-arrow {
+    display: none !important;
+  }
+
+  .landing-page .cases-grid {
+    order: 2 !important;
+    position: relative !important;
+    z-index: 2 !important;
+    display: flex !important;
+    flex: none !important;
+    width: 100% !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    margin-top: 24px !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+  }
+
+  .landing-page .case-card,
+  .landing-page .case-card--wide {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    height: 228px !important;
+    min-height: 228px !important;
+    max-height: 228px !important;
+    padding: 32px 24px !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+    justify-content: space-between !important;
+  }
+
+  .landing-page .case-top {
+    gap: 12px !important;
+  }
+
+  .landing-page .case-title {
+    font-size: 18px !important;
+    line-height: 26px !important;
+    font-weight: 500 !important;
+  }
+
+  .landing-page .case-desc {
+    font-size: 14px !important;
+    line-height: 22px !important;
+  }
+
+  .landing-page .case-stats {
+    gap: 10px !important;
+  }
+
+  .landing-page .stat-label,
+  .landing-page .stat-value {
+    font-size: 14px !important;
+    line-height: 22px !important;
+  }
+
+  .landing-page .stat-row {
+    gap: 8px !important;
+  }
+
+  .landing-page .stat-line {
+    width: 2px !important;
+    height: 12px !important;
+    border-radius: 1px !important;
+  }
+
+  .landing-page .stat-value {
+    font-weight: 700 !important;
+  }
+
+  /* 底部插图 400×240 贴左下，置于内容下层 Figma 16245 */
+  .landing-page .cases-tab-img {
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    z-index: 1 !important;
+    width: 400px !important;
+    height: 240px !important;
+    max-width: none !important;
+    margin: 0 !important;
+    opacity: 1 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+  }
+
+  .landing-page .cases-tab-img img {
+    display: block !important;
+    width: 400px !important;
+    height: 240px !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  .landing-page .cases-tab-img:not(.is-active) {
+    display: none !important;
+  }
+
+  /* 内容培训 Figma 12507:15290 */
+  .landing-page .training {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .landing-page .training-inner {
+    gap: 24px !important;
+  }
+
+  .landing-page .training-tabs {
+    width: 100% !important;
+    max-width: 326px !important;
+    justify-content: center !important;
+  }
+
+  .landing-page .training-tab {
+    flex: 1 1 0 !important;
+    padding: 14px 16px !important;
+    text-align: center !important;
+  }
+
+  .landing-page .training-cards {
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  .landing-page .training-card {
+    width: 100% !important;
+    flex: none !important;
+    gap: 16px !important;
+    padding: 24px !important;
+  }
+
+  .landing-page .training-card-title {
+    font-size: 18px !important;
+    line-height: 26px !important;
+  }
+
+  /* 底部 Footer Figma 12507:15351 */
+  .landing-page .footer {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  .landing-page .footer-cta {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 24px !important;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .landing-page .el-button.btn-login-footer {
+    width: 100% !important;
+    max-width: none !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    border-radius: 10px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 24px !important;
+  }
+
+  .landing-page .footer .cta-line-muted,
+  .landing-page .footer .cta-line-main {
+    font-size: 28px !important;
+    line-height: 36px !important;
+  }
+
+  .landing-page .footer-main {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 24px !important;
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+
+  .landing-page .footer-logo {
+    width: 128px !important;
+    height: 32px !important;
+    object-fit: contain !important;
+  }
+
+  .landing-page .footer-nav {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 24px !important;
+  }
+
+  .landing-page .footer-col {
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .landing-page .footer-bottom {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    height: auto !important;
+    gap: 16px !important;
+    padding: 16px 0 !important;
+  }
+
+  .landing-page .footer-legal {
+    flex-wrap: wrap !important;
+  }
+
+  .landing-page .footer-social {
+    align-self: flex-start !important;
+  }
+}

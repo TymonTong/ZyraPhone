@@ -1,0 +1,251 @@
+/* 官网落地页 — 对齐 Figma 首页 1920×5590 */
+
+.landing-page {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--el-bg-color);
+  font-family: var(--el-font-family), 'Alibaba PuHuiTi 3.0', 'PingFang SC', sans-serif;
+  color: var(--el-text-color-primary);
+
+  /* 固定导航高度，断点在 responsive.css 覆盖 */
+  --navbar-height: 72px;
+
+  /* Banner 顶部间距（内容区之上），<768 在 responsive.css 改为 112 */
+  --banner-top-spacing: 144px;
+
+  /* 区块大标题（>1600 默认 40/48，各断点在 responsive.css 覆盖） */
+  --landing-title-font-size: 40px;
+  --landing-title-line-height: 48px;
+
+  /* 区块小标题（>1600 默认 24/32） */
+  --landing-subtitle-font-size: 24px;
+  --landing-subtitle-line-height: 32px;
+  --landing-subtitle-block-height: 48px;
+
+  /* 选择我们图标容器 / Lottie（>1600 默认 48 盒 + 28 动效） */
+  --choose-icon-box-size: 48px;
+  --choose-icon-lottie-size: 28px;
+  --choose-icon-box-radius: 12px;
+
+  /* 内容培训 Tab 切换（>1600 默认 20/28） */
+  --training-tab-font-size: 20px;
+  --training-tab-line-height: 28px;
+
+  /* 解决方案条目标题（>1600 默认 20/28） */
+  --solution-title-font-size: 20px;
+  --solution-title-line-height: 28px;
+
+  /* 出海案例 Tab（>1600 默认 24/32，部分断点覆盖） */
+  --cases-tab-font-size: 24px;
+  --cases-tab-line-height: 32px;
+
+  /* 布局（各断点在 responsive.css 覆盖） */
+  --solutions-inner-direction: row;
+  --data-inner-grid-columns: minmax(0, 1fr) minmax(0, 2fr);
+  --systems-cards-display: flex;
+  --systems-cards-grid-columns: none;
+  --training-cards-display: flex;
+  --cases-grid-display: grid;
+  --cases-grid-columns: repeat(2, minmax(0, 1fr));
+}
+
+.landing-container {
+  width: 100%;
+  max-width: 1680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landing-section {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+/* 锚点滚动时不被固定导航遮挡 */
+.landing-section[id],
+.banner[id] {
+  scroll-margin-top: var(--navbar-height, 72px);
+}
+
+/* 区块大标题：40/48（>1600），断点内由 --landing-title-* 覆盖 */
+.landing-h2,
+.landing-page .data-title,
+.landing-page .leads-title,
+.landing-page .cta-line-muted,
+.landing-page .cta-line-main {
+  margin: 0;
+  font-size: var(--landing-title-font-size);
+  font-weight: 700;
+  line-height: var(--landing-title-line-height);
+}
+
+.landing-h2,
+.landing-page .data-title,
+.landing-page .cta-line-muted,
+.landing-page .cta-line-main {
+  color: var(--el-text-color-primary);
+}
+
+.landing-page .cta-line-muted {
+  color: #8e8ea3;
+}
+
+.landing-page .leads-title {
+  color: #fff;
+}
+
+/* 区块小标题：24/32（>1600），断点内由 --landing-subtitle-* 覆盖 */
+.landing-page .feature-title,
+.landing-page .system-title,
+.landing-page .case-title,
+.landing-page .training-card-title {
+  font-size: var(--landing-subtitle-font-size);
+  line-height: var(--landing-subtitle-line-height);
+}
+
+.landing-page .cases-tab-text {
+  font-size: var(--cases-tab-font-size);
+  line-height: var(--cases-tab-line-height);
+}
+
+.landing-page .feature-title {
+  height: var(--landing-subtitle-block-height);
+}
+
+.landing-desc {
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--el-text-color-secondary);
+  margin: 0;
+}
+
+.landing-header-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* 黑色按钮统一：高 48 / 圆角 10 / 16 Medium（ot-btn--black） */
+.landing-page .el-button.ot-btn--black:not(.is-text):not(.is-link) {
+  height: 48px;
+  min-height: 48px;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.landing-page .el-button.ot-btn--black:not(.is-text):not(.is-link) > span {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.landing-page .el-button.btn-cta-black {
+  width: 240px;
+  min-width: 240px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.landing-page .el-button.btn-login-footer {
+  width: 360px;
+  max-width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* EP 将 default 插槽包在一层 span 内，需拉满宽度才能实现文案/图标左右分列 */
+.landing-page .el-button.btn-login-footer > span {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 0;
+}
+
+.landing-page .el-button.btn-login-footer .btn-login-footer__icon {
+  flex-shrink: 0;
+  display: block;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  color: var(--el-icon-color-write);
+  transition: transform 0.2s ease;
+}
+
+.landing-page .el-button.btn-login-footer:hover .btn-login-footer__icon {
+  transform: translateX(4px);
+}
+
+/* 页脚社交图标按钮 Figma 12371:23566：OT 默认仅图标按钮 + 稿面默认底色 */
+.landing-page .footer-social {
+  gap: 12px;
+}
+
+.landing-page .footer-social .footer-social-btn.el-button {
+  --el-button-bg-color: var(--el-fill-color-lighter);
+  --el-button-text-color: var(--el-icon-color-primary);
+  border-radius: 8px;
+}
+
+.landing-page .footer-social .footer-social-btn.el-button + .el-button {
+  margin-left: 0;
+}
+
+.landing-page .footer-social .footer-social-btn .otymon-iconfont-svg {
+  width: 14.4px;
+  height: 14.4px;
+  font-size: 14.4px;
+  margin: 0;
+}
+
+/* 图标容器 32×32 */
+.icon-box-32 {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--el-fill-color-lighter);
+  border: 1px solid var(--el-border-color);
+  border-radius: 8px;
+}
+
+.icon-box-32 img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Tag 轻量主色 */
+.tag-primary-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 10px;
+  background: var(--el-color-primary-light-9);
+  border: 1px solid var(--el-color-primary-light-8);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--el-color-primary);
+  line-height: 20px;
+}
+
+/* 数据数字 Poppins */
+.metric-number {
+  font-family: 'Poppins', var(--el-font-family), sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 36px;
+  color: var(--el-text-color-primary);
+}
