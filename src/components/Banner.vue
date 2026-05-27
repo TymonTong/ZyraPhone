@@ -4,14 +4,14 @@
       <img
         class="banner-bg-poster"
         :class="{ 'is-hidden': videoReady }"
-        src="/img/banner/banner bg.png"
+        :src="assetUrl('/img/banner/banner bg.png')"
         alt=""
       />
       <video
         ref="videoRef"
         class="banner-bg-video"
         :class="{ 'is-visible': videoReady }"
-        src="/img/banner/banner bg.mp4"
+        :src="assetUrl('/img/banner/banner bg.mp4')"
         muted
         loop
         playsinline
@@ -36,7 +36,7 @@
       </div>
       <div class="hero-shot">
         <div class="hero-shot-frame">
-          <img src="/img/banner/banner.png" alt="ZyraPhone 系统界面" />
+          <img :src="assetUrl('/img/banner/banner.png')" alt="ZyraPhone 系统界面" />
         </div>
       </div>
     </div>
@@ -46,6 +46,7 @@
 <script setup>
 import { ref, onMounted, nextTick } from 'vue'
 import { useGoLogin } from '../composables/useGoLogin'
+import { assetUrl } from '../utils/assetUrl.js'
 
 const { goLogin } = useGoLogin()
 

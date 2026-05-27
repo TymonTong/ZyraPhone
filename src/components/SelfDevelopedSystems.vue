@@ -47,6 +47,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import { useGoLogin } from '../composables/useGoLogin'
+import { assetUrl } from '../utils/assetUrl.js'
 
 const { goLogin } = useGoLogin()
 
@@ -61,26 +62,26 @@ const videoRefs = ref([])
 
 const cards = [
   {
-    img: '/img/自研系统/1.png',
-    video: '/img/自研系统/1.mp4',
+    img: assetUrl('/img/自研系统/1.png'),
+    video: assetUrl('/img/自研系统/1.mp4'),
     title: '官方API数据管理后台',
     desc: '全账号数据一键同步，无需人工统计，覆盖播放、完播、转化全维度数据，数据趋势可视化且异常智能预警，多账号数据可统一汇总并一键导出',
   },
   {
-    img: '/img/自研系统/2.png',
-    video: '/img/自研系统/2.mp4',
+    img: assetUrl('/img/自研系统/2.png'),
+    video: assetUrl('/img/自研系统/2.mp4'),
     title: '多账号矩阵批量定时发布',
     desc: '跨时区自动发布，解放人工双手，可实现千级账号集群统一管理、防关联隔离，跨时区精准定时发布并实时监控发布状态，批量分发内容规避人工操作失误',
   },
   {
-    img: '/img/自研系统/3.png',
-    video: '/img/自研系统/3.mp4',
+    img: assetUrl('/img/自研系统/3.png'),
+    video: assetUrl('/img/自研系统/3.mp4'),
     title: 'AI智能视频剪辑量产引擎',
     desc: '无需专业剪辑，海量原创内容量产，支持文本/图片一键生成原创短视频、多素材混剪去重及多语种字幕配音，适配全球市场需求',
   },
   {
-    img: '/img/自研系统/4.png',
-    video: '/img/自研系统/4.mp4',
+    img: assetUrl('/img/自研系统/4.png'),
+    video: assetUrl('/img/自研系统/4.mp4'),
     title: '全域运营智能监控中心',
     desc: '实时监控账号运营状态、内容曝光数据及风控异常，一键查看运营全局，快速响应调整，保障运营高效可控',
   },

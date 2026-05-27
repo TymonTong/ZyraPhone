@@ -29,7 +29,7 @@
         <div class="data-map-stage">
           <img
             class="data-map-img"
-            src="/img/数据成果/map.png"
+            :src="assetUrl('/img/数据成果/map.png')"
             alt="全球数据分布"
             width="2200"
             height="1000"
@@ -55,6 +55,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import mapBars from '../data/map-bars.json'
+import { assetUrl } from '../utils/assetUrl.js'
 
 /** 与数据条生长动画 map-bar-grow 时长一致 */
 const GROW_DURATION_MS = 1200

@@ -2,13 +2,13 @@
   <section class="cases landing-section">
     <div class="cases-wrap landing-container">
       <div class="cases-bg-right" aria-hidden="true">
-        <img src="/img/出海案例/bg.png" alt="" />
+        <img :src="assetUrl('/img/出海案例/bg.png')" alt="" />
       </div>
       <div class="cases-tab-img cases-tab-img--ecom" :class="{ active: activeTab === 'ecom' }">
-        <img src="/img/出海案例/电商出海.png" alt="" />
+        <img :src="assetUrl('/img/出海案例/电商出海.png')" alt="" />
       </div>
       <div class="cases-tab-img cases-tab-img--corp" :class="{ active: activeTab === 'corp' }">
-        <img src="/img/出海案例/企业出海.png" alt="" />
+        <img :src="assetUrl('/img/出海案例/企业出海.png')" alt="" />
       </div>
 
       <aside class="cases-sidebar">
@@ -74,6 +74,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { assetUrl } from '../utils/assetUrl.js'
 
 const activeTab = ref('ecom')
 

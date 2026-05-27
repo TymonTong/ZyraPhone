@@ -11,7 +11,7 @@
     <header class="login-header">
       <div class="login-header__inner">
         <router-link to="/" class="login-logo-link">
-          <img src="/img/logo.png" alt="ZyraPhone" class="login-logo" width="160" height="40" />
+          <img :src="assetUrl('/img/logo.png')" alt="ZyraPhone" class="login-logo" width="160" height="40" />
         </router-link>
       </div>
     </header>
@@ -120,7 +120,7 @@
                   <el-button size="large">
                     <img
                       class="login-btn-google__img"
-                      src="/img/login/google.png"
+                      :src="assetUrl('/img/login/google.png')"
                       alt=""
                       width="14"
                       height="14"
@@ -154,6 +154,7 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import LoginFeatureIcon from '../components/LoginFeatureIcon.vue'
+import { assetUrl } from '../utils/assetUrl.js'
 
 const loginTab = ref('email')
 

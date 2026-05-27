@@ -1,8 +1,12 @@
+<script setup>
+import { assetUrl } from '../utils/assetUrl.js'
+</script>
+
 <template>
   <div class="big-bg-zone">
     <img
       class="big-bg-zone__img"
-      src="/img/选择我们/big bg.png"
+      :src="assetUrl('/img/选择我们/big bg.png')"
       alt=""
       aria-hidden="true"
     />

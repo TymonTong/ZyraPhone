@@ -83,7 +83,7 @@
   top: 0;
   width: 1920px;
   height: 1080px;
-  background-image: url('/img/login/bg.png');
+  background-image: var(--asset-login-bg);
   background-size: 1920px 1080px;
 }
 
@@ -92,7 +92,7 @@
   top: 62px;
   width: 2240px;
   height: 1260px;
-  background-image: url('/img/login/middle.png');
+  background-image: var(--asset-login-middle);
   background-size: 2240px 1260px;
   transform-origin: 1966px 2098px;
   animation: login-bg-middle-swing 10s linear infinite;
@@ -114,7 +114,7 @@
   top: 0;
   width: 1920px;
   height: 1080px;
-  background-image: url('/img/login/overlay.png');
+  background-image: var(--asset-login-overlay);
   background-size: 1920px 1080px;
 }
 

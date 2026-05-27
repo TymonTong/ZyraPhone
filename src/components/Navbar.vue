@@ -3,7 +3,7 @@
     <div class="navbar-inner">
       <div class="navbar-left">
         <a href="#home" class="logo-link" @click="scrollTo('#home', $event)">
-          <img src="/img/logo.png" alt="ZyraPhone" class="logo-img" width="160" height="40" />
+          <img :src="assetUrl('/img/logo.png')" alt="ZyraPhone" class="logo-img" width="160" height="40" />
         </a>
         <nav class="nav-menu">
           <el-link
@@ -64,6 +64,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useGoLogin } from '../composables/useGoLogin'
+import { assetUrl } from '../utils/assetUrl.js'
 
 const menuOpen = ref(false)
 const { goLogin } = useGoLogin()

@@ -26,7 +26,7 @@
 
       <!-- Figma 12507:15963：上 logo，下三列链接 -->
       <div class="footer-main">
-        <img src="/img/logo.png" alt="ZyraPhone" class="footer-logo" width="128" height="32" />
+        <img :src="assetUrl('/img/logo.png')" alt="ZyraPhone" class="footer-logo" width="128" height="32" />
         <div class="footer-nav">
           <div v-for="col in navCols" :key="col.title" class="footer-col">
             <h4 class="col-title">{{ col.title }}</h4>
@@ -46,7 +46,7 @@
       <!-- Figma 12507:16001：备案 + 社交图标 -->
       <div class="footer-bottom">
         <div class="footer-legal">
-          <img src="/img/footer/beian.png" alt="" class="footer-beian" width="20" height="20" />
+          <img :src="assetUrl('/img/footer/beian.png')" alt="" class="footer-beian" width="20" height="20" />
           <span>苏ICP备2024118083号</span>
           <span>©2023-2025 goproxy.com. All Rights Reserved</span>
         </div>
@@ -72,6 +72,7 @@
 <script setup>
 import FooterSocialIcon from './FooterSocialIcon.vue'
 import { useGoLogin } from '../composables/useGoLogin'
+import { assetUrl } from '../utils/assetUrl.js'
 
 const { goLogin } = useGoLogin()
 

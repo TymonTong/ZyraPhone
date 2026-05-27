@@ -1,5 +1,6 @@
 <script setup>
 import { useGoLogin } from '../composables/useGoLogin'
+import { assetUrl } from '../utils/assetUrl.js'
 
 const { goLogin } = useGoLogin()
 </script>
@@ -7,7 +8,7 @@ const { goLogin } = useGoLogin()
 <template>
   <section class="leads landing-section">
     <div class="leads-card landing-container">
-      <img class="leads-bg" src="/img/海外线索/海外线索.png" alt="" aria-hidden="true" />
+      <img class="leads-bg" :src="assetUrl('/img/海外线索/海外线索.png')" alt="" aria-hidden="true" />
       <div class="leads-content">
         <h2 class="leads-title">为企业获取高质量海外线索</h2>
         <p class="leads-desc">
