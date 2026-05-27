@@ -22,7 +22,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -32,6 +32,8 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          # Vite 8 在 CI 下可能因诊断信息非零退出
+          CI: false
 
       - name: SPA fallback for GitHub Pages
         run: cp dist/index.html dist/404.html
